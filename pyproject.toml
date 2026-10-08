@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "war-lan"
+version = "0.1.0"
+description = "Turn-based global strategy for trusted LANs"
+requires-python = ">=3.10"
+dependencies = ["pygame-ce==2.5.8"]
+
+[project.scripts]
+war-lan = "war_lan.ui:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+war_lan = ["assets/*.json", "assets/*.txt", "assets/*.md"]

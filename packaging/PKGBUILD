@@ -1,0 +1,20 @@
+# Local pacman package. Run makepkg -si from this directory after cloning.
+pkgname=war-lan
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Turn-based world strategy with LAN host and discovery'
+arch=('any')
+url='https://github.com/jpggames2001-web/test'
+license=('MIT' 'ODbL-1.0')
+depends=('python' 'python-pygame')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+# Builds the adjacent checkout; an AUR release must use a tagged source archive
+# and its SHA-256 instead of this local development recipe.
+build() {
+  python -m build --wheel --no-isolation --outdir "$srcdir/dist" "$startdir/.."
+}
+package() {
+  python -m installer --destdir="$pkgdir" "$srcdir"/dist/*.whl
+  install -Dm644 "$startdir/../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$startdir/../DATA_SOURCES.md" "$pkgdir/usr/share/doc/$pkgname/DATA_SOURCES.md"
+}

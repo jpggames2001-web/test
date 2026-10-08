@@ -1,0 +1,5 @@
+include README.md DATA_SOURCES.md LICENSE requirements.txt run_game.py
+recursive-include tools *.py
+recursive-include packaging PKGBUILD
+recursive-include assets *.md
+recursive-include tests *.py
